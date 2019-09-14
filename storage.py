@@ -4,7 +4,15 @@ import os
 import tempfile
 import os.path
 storage_path = os.path.join(tempfile.gettempdir(), 'storage.data')
-
+'''
+To input value write request  according form:
+python3 storage.py --key [key] --value [value]
+to get value write request:
+python3 storage.py --key [key]
+example:
+python3 storage.py --key 1 --value 1
+python3 storage.py --key 1
+'''
 
 def argparser():
     parser = argparse.ArgumentParser()
