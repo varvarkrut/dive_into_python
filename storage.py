@@ -4,7 +4,11 @@ import os
 import tempfile
 import os.path
 
-
+'''To input value write request  according example:
+python3 storage.py --key 1 --value 1
+to get value write request:
+python3 storage.py --key 1
+'''
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--key",default='False', nargs='?')
