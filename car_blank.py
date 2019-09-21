@@ -15,6 +15,7 @@ class CarBase:
 
     def get_photo_file_ext(self):
         ext = os.path.splitext(self.photo_file_name)
+        return ext[1]
 
 
 class Car(CarBase):
@@ -51,20 +52,36 @@ class SpecMachine(CarBase):
         self.extra = extra
 
 
+class MakeInstance:
+    @classmethod
+    def getting1_instance(cls, row):
+        if row[0] == 'car':
+            return(Car(row[1],row[3], row[5], row[2]))
+        elif row[0] == 'truck':
+            return(Truck(row[1],row[3],row[5],row[4]))
+        elif row[0] == 'spec_machine':
+            return(SpecMachine(row[1],row[3],row[5],row[6]))
+        else:
+            return
+
+
 def get_car_list(csv_filename):
-    car_type_listing = {}
-    car_type_listing['car'] = Car
-    car_type_listing['truck'] = Truck
-    car_type_listing['spec_machine'] = SpecMachine
-    with open('C:\\test.csv') as csv_fd:
+    car_list = []
+    with open(csv_filename) as csv_fd:
         reader = csv.reader(csv_fd, delimiter=';')
         next(reader)  # пропускаем заголовок
         for row in reader:
             try:
-                car_type = car_type_listing[row[0]]
-                print(car_type)
+                a = MakeInstance.getting1_instance(row)
+                if isinstance(a,CarBase):
+                    car_list.append(a)
+                else:
+                    a=None
             except Exception as a:
-                print(a)
-    car_list = []
+                pass
     return car_list
-get_car_list('hi')
+
+
+a=(get_car_list('C:\\test.csv'))
+print(a[2].get_photo_file_ext())
+
