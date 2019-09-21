@@ -1,3 +1,27 @@
+'''Классы и наследование
+Как правило задачи про классы носят не вычислительный характер. Обычно нужно написать классы, которые отвечают определенным интерфейсам. Насколько удобны эти интерфейсы и как сильно связаны классы между собой, определит легкость их использования в будущих программах.
+
+Предположим есть данные о разных автомобилях и спецтехнике. Данные представлены в виде таблицы с характеристиками. Обратите внимание на то, что некоторые колонки присущи только легковым автомобилям, например, кол-во пассажирских мест. В свою очередь только у грузовых автомобилей есть длина, ширина и высота кузова.'''
+
+
+import os
+import csv
+
+
+class CarBase:
+    car_type = 1
+    photo_file_name = 1
+    brand = 1
+    carrying = 1
+
+    def __init__(self, brand, photo_file_name, carrying):
+        self.brand = brand
+        self.photo_file_name = photo_file_name
+        self.carrying = carrying
+
+    def get_photo_file_ext(self):
+        ext = os.path.splitext(self.photo_file_name)
+        return ext[1]
 import os
 import csv
 
@@ -23,7 +47,7 @@ class Car(CarBase):
 
     def __init__(self, brand, photo_file_name, carrying, passenger_seats_count):
         super().__init__(brand, photo_file_name, carrying)
-        self.passenger_seats_count = passenger_seats_count
+        self.passenger_seats_count = int(passenger_seats_count)
 
 
 class Truck(CarBase):
@@ -45,7 +69,7 @@ class Truck(CarBase):
 
 
 class SpecMachine(CarBase):
-    car_type = 'specmachine'
+    car_type = 'spec_machine'
 
     def __init__(self, brand, photo_file_name, carrying, extra):
         super().__init__(brand, photo_file_name, carrying)
@@ -82,6 +106,5 @@ def get_car_list(csv_filename):
     return car_list
 
 
-a=(get_car_list('C:\\test.csv'))
-print(a[2].get_photo_file_ext())
+
 
