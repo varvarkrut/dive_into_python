@@ -22,24 +22,7 @@ class CarBase:
     def get_photo_file_ext(self):
         ext = os.path.splitext(self.photo_file_name)
         return ext[1]
-import os
-import csv
 
-
-class CarBase:
-    car_type = 1
-    photo_file_name = 1
-    brand = 1
-    carrying = 1
-
-    def __init__(self, brand, photo_file_name, carrying):
-        self.brand = brand
-        self.photo_file_name = photo_file_name
-        self.carrying = carrying
-
-    def get_photo_file_ext(self):
-        ext = os.path.splitext(self.photo_file_name)
-        return ext[1]
 
 
 class Car(CarBase):
