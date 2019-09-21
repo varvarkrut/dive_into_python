@@ -51,27 +51,20 @@ class SpecMachine(CarBase):
         self.extra = extra
 
 
-class MakeInstance:
-    @classmethod
-    def getting1_instance(cls, row):
-        if row[0] == 'car':
-            return(Car(row[1], 2, 3, 4))
-        elif row[0] == 'truck':
-            return(Truck(row[1],1,2,'8x3x2.5'))
-
-
 def get_car_list(csv_filename):
+    car_type_listing = {}
+    car_type_listing['car'] = Car
+    car_type_listing['truck'] = Truck
+    car_type_listing['spec_machine'] = SpecMachine
     with open('C:\\test.csv') as csv_fd:
         reader = csv.reader(csv_fd, delimiter=';')
         next(reader)  # пропускаем заголовок
         for row in reader:
             try:
-                a = MakeInstance.getting1_instance(row)
-                print(a.brand)
+                car_type = car_type_listing[row[0]]
+                print(car_type)
             except Exception as a:
                 print(a)
     car_list = []
     return car_list
-
-
 get_car_list('hi')
