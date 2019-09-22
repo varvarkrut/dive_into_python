@@ -1,9 +1,3 @@
-import argparse
-import json
-import os
-import tempfile
-import os.path
-storage_path = os.path.join(tempfile.gettempdir(), 'storage.data')
 '''
 To input value write request  according form:
 python3 storage.py --key [key] --value [value]
@@ -13,6 +7,14 @@ example:
 python3 storage.py --key 1 --value 1
 python3 storage.py --key 1
 '''
+
+import argparse
+import json
+import os
+import tempfile
+import os.path
+storage_path = os.path.join(tempfile.gettempdir(), 'storage.data')
+
 
 def argparser():
     parser = argparse.ArgumentParser()
