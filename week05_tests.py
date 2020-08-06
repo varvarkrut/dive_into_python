@@ -1,5 +1,5 @@
 import unittest
-from factorize import factorize
+from week05_factorize import factorize
 import sys
 
 
